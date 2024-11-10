@@ -1,0 +1,39 @@
+.message {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+}
+
+.message strong {
+  color: #007bff;
+}
+
+.message .timestamp {
+  font-size: 0.8em;
+  color: #6c757d;
+  margin-left: 10px;
+}
+
+.message p {
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+#countdown {
+  font-weight: bold;
+  color: #007bff;
+}
+
+.card {
+  height: 100%;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-text {
+  flex-grow: 1;
+}

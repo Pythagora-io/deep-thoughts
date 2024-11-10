@@ -1,0 +1,15 @@
+<!-- views/partials/_chatRoomCard.ejs -->
+<div class="col-md-4 mb-3">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><%= room.name %></h5>
+      <p class="card-text"><%= room.topic %></p>
+      <p class="card-text"><small class="text-muted">Time between messages: <%= room.timeBetweenMessages %> seconds</small></p>
+      <% if (session && session.userId) { %>
+        <a href="/chatroom/<%= room._id %>" class="btn btn-primary">Join Room</a>
+      <% } else { %>
+        <a href="/auth/login" class="btn btn-secondary">Login to Join</a>
+      <% } %>
+    </div>
+  </div>
+</div>

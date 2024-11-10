@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/_head.ejs') %>
+<body>
+  <%- include('partials/_header.ejs') %>
+  <main role="main" class="container mt-4">
+    <h1 class="mb-4">Chat Rooms</h1>
+    <% if (isCreator) { %>
+      <a href="/chatroom/create" class="btn btn-primary mb-3">Create Chat Room</a>
+    <% } %>
+
+    <% if (session && session.userId && userChatRooms.length > 0) { %>
+      <h2>Your Chat Rooms</h2>
+      <div class="row mb-4">
+        <% userChatRooms.forEach(room => { %>
+          <%- include('partials/_chatRoomCard', { room: room, session: session }) %>
+        <% }) %>
+      </div>
+    <% } %>
+
+    <h2>All Chat Rooms</h2>
+    <div class="row">
+      <% allChatRooms.forEach(room => { %>
+        <%- include('partials/_chatRoomCard', { room: room, session: session }) %>
+      <% }) %>
+    </div>
+  </main>
+  <%- include('partials/_footer.ejs') %>
+  <script>
+    console.log('Rendering chatRoomList view with data:', { allChatRooms, userChatRooms, session, isCreator });
+  </script>
+</body>
+</html>

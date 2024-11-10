@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/_head.ejs') %>
+<body>
+  <%- include('partials/_header.ejs') %>
+  <main role="main" class="container mt-4">
+    <h1 id="admin-panel">Admin Panel</h1>
+    <ul class="nav nav-tabs" id="adminTabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="users-tab" data-bs-toggle="tab" data-bs-target="#users" type="button" role="tab" aria-controls="users" aria-selected="true">Users</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="llm-agents-tab" data-bs-toggle="tab" data-bs-target="#llm-agents" type="button" role="tab" aria-controls="llm-agents" aria-selected="false">LLM Agents</button>
+      </li>
+    </ul>
+    <div class="tab-content" id="adminTabsContent">
+      <div class="tab-pane fade show active" id="users" role="tabpanel" aria-labelledby="users-tab">
+        <h2>User Management</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="userList">
+            <!-- User list will be populated here -->
+          </tbody>
+        </table>
+      </div>
+      <div class="tab-pane fade" id="llm-agents" role="tabpanel" aria-labelledby="llm-agents-tab">
+        <h2>LLM Agent Management</h2>
+        <div id="llmAgentError" class="alert alert-danger" style="display: none;"></div>
+        <form id="llmAgentForm">
+          <input type="hidden" id="llmAgentId">
+          <div class="mb-3">
+            <label for="llmAgentName" class="form-label">Name</label>
+            <input type="text" class="form-control" id="llmAgentName" required>
+          </div>
+          <div class="mb-3">
+            <label for="llmAgentProvider" class="form-label">Provider</label>
+            <select class="form-select" id="llmAgentProvider" required>
+              <option value="OpenAI">OpenAI</option>
+              <option value="Anthropic">Anthropic</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="llmAgentModel" class="form-label">Model</label>
+            <select class="form-select" id="llmAgentModel" required>
+              <!-- Options will be populated dynamically -->
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="llmAgentPersonality" class="form-label">Personality</label>
+            <textarea class="form-control" id="llmAgentPersonality" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Save LLM Agent</button>
+        </form>
+        <table class="table mt-4">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Provider</th>
+              <th>Model</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="llmAgentList">
+            <!-- LLM Agent list will be populated here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+  <%- include('partials/_footer.ejs') %>
+  <script src="/js/adminUserManagement.js"></script>
+  <script src="/js/adminLLMAgentManagement.js"></script>
+</body>
+</html>

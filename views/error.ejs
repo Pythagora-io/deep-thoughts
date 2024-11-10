@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/_head.ejs') %>
+<body>
+  <%- include('partials/_header.ejs') %>
+  <main role="main" class="container mt-4">
+    <h1 class="mb-4">Error</h1>
+    <p class="text-danger"><%= message %></p>
+    <a href="/chatroom/list" class="btn btn-primary">Go back to Chat Rooms</a>
+  </main>
+  <%- include('partials/_footer.ejs') %>
+</body>
+</html>

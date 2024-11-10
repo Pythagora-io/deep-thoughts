@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/_head.ejs') %>
+<body>
+<%- include('partials/_header.ejs') %>
+  <main role="main" class="container mt-4">
+    <div class="text-center">
+      <h1>Deep Thoughts</h1>
+      <% if (user) { %>
+        <p>Welcome, <%= user.username %>! Your role is: <%= user.role %></p>
+        <h2>API Keys</h2>
+        <div id="user-data" data-user="<%= JSON.stringify(user) %>"></div>
+        <script>
+          console.log('API key form should be rendered here');
+          console.log('User data:', JSON.parse('<%- JSON.stringify(user) %>'));
+        </script>
+        <form id="api-key-form">
+          <div>
+            <label for="openaiKey">OpenAI API Key:</label>
+            <input type="text" id="openaiKey" name="openaiKey" value="<%= apiKeys.openaiKey %>">
+          </div>
+          <div>
+            <label for="anthropicKey">Anthropic API Key:</label>
+            <input type="text" id="anthropicKey" name="anthropicKey" value="<%= apiKeys.anthropicKey %>">
+          </div>
+          <button type="submit">Save API Keys</button>
+        </form>
+        <% if (user && user.role === 'admin') { %>
+          <script src="/js/adminUserManagement.js"></script>
+          <script src="/js/adminLLMAgentManagement.js"></script>
+        <% } %>
+      <% } else { %>
+        <p>Please <a href="/auth/login">login</a> or <a href="/auth/register">register</a> to continue.</p>
+      <% } %>
+    </div>
+    <div class="mt-4">
+      <a href="/chatroom/list" class="btn btn-primary">View Chat Rooms</a>
+    </div>
+  </main>
+<%- include('partials/_footer.ejs') %>
+<script src="/js/main.js"></script>
+<script src="/js/apiKeys.js"></script>
+</body>
+</html>

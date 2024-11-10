@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/_head.ejs') %>
+<body>
+  <%- include('partials/_header.ejs') %>
+  <main role="main" class="container mt-4">
+    <h1 class="mb-4">Create Chat Room</h1>
+    <form id="create-chatroom-form">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" required>
+      </div>
+      <div class="mb-3">
+        <label for="topic" class="form-label">Topic</label>
+        <textarea class="form-control" id="topic" required></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="timeBetweenMessages" class="form-label">Time Between Messages (seconds)</label>
+        <input type="number" class="form-control" id="timeBetweenMessages" required>
+      </div>
+      <div class="mb-3">
+        <label for="sentenceCount" class="form-label">Sentence Count</label>
+        <input type="number" class="form-control" id="sentenceCount" <% if (!session || !session.userId) { %>disabled<% } %>>
+      </div>
+      <div class="mb-3">
+        <label for="maxAgentMessages" class="form-label">Max Agent Messages</label>
+        <input type="number" class="form-control" id="maxAgentMessages" <% if (!session || !session.userId) { %>disabled<% } %>>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Select LLM Agents</label>
+        <div id="agent-list"></div>
+      </div>
+      <input type="hidden" id="isAuthenticated" value="<%= session && session.userId ? 'true' : 'false' %>">
+      <% if (!session || !session.userId) { %>
+        <p>You must be logged in to create a chat room.</p>
+        <a href="/auth/login" class="btn btn-primary">Login</a>
+      <% } else { %>
+        <button type="submit" class="btn btn-primary">Create Chat Room</button>
+      <% } %>
+    </form>
+  </main>
+  <%- include('partials/_footer.ejs') %>
+  <script src="/js/createChatRoom.js"></script>
+  <script>
+    console.log('createChatRoom.js loaded');
+  </script>
+</body>
+</html>
