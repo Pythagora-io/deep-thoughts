@@ -84,6 +84,6 @@ To run the project, you need the following technologies installed on your comput
 
 ### License
 
-Copyright (c) 2024. All rights reserved.
+The project is open source, licensed under the MIT License. See the [LICENSE](LICENSE).
 
-This project is proprietary and not open source. Redistribution or commercial use is strictly prohibited without prior agreement.
+Copyright © 2024 Pythagora-io.
